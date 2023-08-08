@@ -116,7 +116,7 @@ dependencies = [
 
 [[package]]
 name = "auth"
-version = "0.1.0"
+version = "0.0.1"
 dependencies = [
  "chrono",
  "color-eyre",
@@ -428,6 +428,9 @@ dependencies = [
 [[package]]
 name = "db"
 version = "0.0.1"
+dependencies = [
+ "sqlx",
+]
 
 [[package]]
 name = "der"
@@ -473,7 +476,7 @@ dependencies = [
 
 [[package]]
 name = "domains"
-version = "0.1.0"
+version = "0.0.1"
 dependencies = [
  "color-eyre",
  "dotenv",
