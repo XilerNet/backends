@@ -1,0 +1,6 @@
+[submodule "auth-backend"]
+	path = auth-backend
+	url = git@github.com:XilerNet/auth-backend.git
+[submodule "domains-backend"]
+	path = domains-backend
+	url = git@github.com:XilerNet/domains-backend.git
