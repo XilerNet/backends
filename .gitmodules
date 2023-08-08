@@ -4,6 +4,3 @@
 [submodule "bin/domains"]
 	path = bin/domains
 	url = git@github.com:XilerNet/domains-backend.git
-[submodule "crates/db"]
-	path = crates/db
-	url = git@github.com:XilerNet/database.git
