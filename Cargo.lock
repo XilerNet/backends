@@ -480,6 +480,7 @@ version = "0.0.1"
 dependencies = [
  "color-eyre",
  "dotenv",
+ "lazy_static",
  "poem",
  "poem-openapi",
  "sqlx",
