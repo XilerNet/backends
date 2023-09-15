@@ -4,3 +4,6 @@
 [submodule "bin/domains"]
 	path = bin/domains
 	url = git@github.com:XilerNet/domains-backend.git
+[submodule "bin/pay"]
+	path = bin/pay
+	url = git@github.com:XilerNet/pay-backend.git
