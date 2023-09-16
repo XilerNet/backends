@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS links (
   type SMALLSERIAL NOT NULL,
   id VARCHAR(255) NOT NULL,
   encryption_method SMALLSERIAL NOT NULL,
-  account_id UUID NOT NULL REFERENCES accounts(id),
+  account_id UUID NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
   PRIMARY KEY (type, id)
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS account_creations (
 
 CREATE TABLE IF NOT EXISTS sessions (
   id VARCHAR(255) PRIMARY KEY,
-  account_id UUID NOT NULL REFERENCES accounts(id),
+  account_id UUID NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
 
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS sessions (
 CREATE INDEX IF NOT EXISTS sessions_account_id_idx ON sessions (account_id);
 
 CREATE TABLE IF NOT EXISTS addresses (
-  account_id UUID NOT NULL REFERENCES accounts(id),
+  account_id UUID NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
   address VARCHAR(255) NOT NULL,
   encryption_method SMALLSERIAL NOT NULL,
 
@@ -55,7 +55,7 @@ CREATE INDEX IF NOT EXISTS addresses_account_id_idx ON addresses (account_id);
 CREATE INDEX IF NOT EXISTS addresses_address_idx ON addresses (address);
 
 CREATE TABLE IF NOT EXISTS logs (
-  account_id UUID NOT NULL REFERENCES accounts(id),
+  account_id UUID NOT NULL REFERENCES accounts(id) ON DELETE SET DEFAULT,
   action VARCHAR(255) NOT NULL,
   data TEXT,
   encryption_method SMALLSERIAL,
