@@ -8,7 +8,6 @@ CREATE TABLE IF NOT EXISTS payments (
   amount FLOAT8 NOT NULL,
   received FLOAT8 NOT NULL DEFAULT 0,
 
-  confirmations INT NOT NULL DEFAULT 0,
   initiated BOOLEAN NOT NULL DEFAULT FALSE,
   completed BOOLEAN NOT NULL DEFAULT FALSE,
 
@@ -18,7 +17,6 @@ CREATE TABLE IF NOT EXISTS payments (
 
 CREATE INDEX IF NOT EXISTS payments_account_id_idx ON payments (account_id);
 CREATE INDEX IF NOT EXISTS payments_address_idx ON payments (address);
-CREATE INDEX IF NOT EXISTS payments_confirmations_idx ON payments (confirmations);
 CREATE INDEX IF NOT EXISTS payments_initiated_idx ON payments (initiated);
 
 CREATE TABLE IF NOT EXISTS payment_transactions (
