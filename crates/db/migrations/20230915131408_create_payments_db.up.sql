@@ -22,9 +22,14 @@ CREATE INDEX IF NOT EXISTS payments_confirmations_idx ON payments (confirmations
 CREATE INDEX IF NOT EXISTS payments_initiated_idx ON payments (initiated);
 
 CREATE TABLE IF NOT EXISTS payment_transactions (
-  payment_id UUID PRIMARY KEY REFERENCES payments(id),
-  transaction_id VARCHAR(255) NOT NULL
+  payment_id UUID REFERENCES payments(id),
+  transaction_id VARCHAR(255) NOT NULL,
+
+  PRIMARY KEY (payment_id, transaction_id)
 );
+
+CREATE INDEX IF NOT EXISTS payment_transactions_payment_id_idx ON payment_transactions (payment_id);
+CREATE INDEX IF NOT EXISTS payment_transactions_transaction_id_idx ON payment_transactions (transaction_id);
 
 CREATE TABLE IF NOT EXISTS payment_inscription_contents (
   payment_id UUID PRIMARY KEY REFERENCES payments(id),
