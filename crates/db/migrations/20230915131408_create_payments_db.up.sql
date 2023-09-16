@@ -23,6 +23,9 @@ CREATE TABLE IF NOT EXISTS payment_transactions (
   payment_id UUID REFERENCES payments(id),
   transaction_id VARCHAR(255) NOT NULL,
 
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+
   PRIMARY KEY (payment_id, transaction_id)
 );
 
