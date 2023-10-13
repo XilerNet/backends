@@ -33,7 +33,16 @@ CREATE INDEX IF NOT EXISTS payment_transactions_payment_id_idx ON payment_transa
 CREATE INDEX IF NOT EXISTS payment_transactions_transaction_id_idx ON payment_transactions (transaction_id);
 
 CREATE TABLE IF NOT EXISTS payment_inscription_contents (
-  payment_id UUID PRIMARY KEY REFERENCES payments(id),
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  payment_id UUID REFERENCES payments(id),
   target VARCHAR(255) NOT NULL,
-  content TEXT NOT NULL
+  content TEXT NOT NULL,
+  inscribed BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE TABLE IF NOT EXISTS payment_inscriptions (
+  content UUID REFERENCES payment_inscription_contents(id),
+  commit_tx VARCHAR(255) NOT NULL,
+  reveal_tx VARCHAR(255) NOT NULL,
+  total_fees FLOAT8 NOT NULL
 );
