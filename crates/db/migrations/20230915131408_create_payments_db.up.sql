@@ -34,7 +34,7 @@ CREATE INDEX IF NOT EXISTS payment_transactions_transaction_id_idx ON payment_tr
 
 CREATE TABLE IF NOT EXISTS payment_inscription_contents (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  payment_id UUID REFERENCES payments(id),
+  payment_id UUID REFERENCES payments(id) ON DELETE CASCADE,
   target VARCHAR(255) NOT NULL,
   content TEXT NOT NULL,
   inscribed BOOLEAN NOT NULL DEFAULT FALSE
