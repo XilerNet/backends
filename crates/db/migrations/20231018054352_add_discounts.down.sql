@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS discounts CASCADE;
+DROP TABLE IF EXISTS loyalty_discounts CASCADE;
