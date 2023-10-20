@@ -8,7 +8,10 @@ CREATE TABLE IF NOT EXISTS discounts (
   expiration_date TIMESTAMP NOT NULL,
   max_uses INTEGER,
   uses INTEGER NOT NULL DEFAULT 0,
-  stackable BOOLEAN NOT NULL DEFAULT FALSE
+  stackable BOOLEAN NOT NULL DEFAULT FALSE,
+
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX IF NOT EXISTS discounts_code_idx ON discounts (code);
@@ -24,7 +27,10 @@ CREATE TABLE IF NOT EXISTS loyalty_discounts (
   amount NUMERIC(10, 2) NOT NULL,
   currency VARCHAR(3) NOT NULL,
   message TEXT NOT NULL,
-  stackable BOOLEAN NOT NULL DEFAULT FALSE
+  stackable BOOLEAN NOT NULL DEFAULT FALSE,
+
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX IF NOT EXISTS loyalty_discounts_collection_idx ON loyalty_discounts (collection_type, collection_id);
