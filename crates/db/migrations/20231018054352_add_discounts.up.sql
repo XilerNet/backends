@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS loyalty_discounts (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   collection_type SMALLSERIAL NOT NULL,
   collection_id VARCHAR(255) NOT NULL,
-  collection_minimum_owned INTEGER,
+  collection_minimum_owned FLOAT8,
   amount NUMERIC(10, 2) NOT NULL,
   currency VARCHAR(3) NOT NULL,
   message TEXT NOT NULL,
@@ -29,3 +29,7 @@ CREATE TABLE IF NOT EXISTS loyalty_discounts (
 
 CREATE INDEX IF NOT EXISTS loyalty_discounts_collection_idx ON loyalty_discounts (collection_type, collection_id);
 CREATE INDEX IF NOT EXISTS loyalty_discounts_collection_minimum_owned_idx ON loyalty_discounts (collection_type, collection_id, collection_minimum_owned);
+
+INSERT INTO loyalty_discounts (collection_type, collection_id, collection_minimum_owned, amount, currency, message, stackable)
+VALUES (0, '$BIT', NULL, 5, '%', '<a href="https://www.bitcheck.me" target="_blanc">$BIT</a> holder loyalty', TRUE),
+  (0, '$BIT', 25000, 5, '%', '25k+ <a href="https://www.bitcheck.me" target="_blanc">$BIT</a> holder loyalty', TRUE);
